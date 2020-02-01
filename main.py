@@ -5,6 +5,15 @@ from telegram.ext import Dispatcher, CommandHandler
 from datetime import datetime, time
 
 
+def mackenzie_callback(bot, update: Update, **optional_args):
+    update.message.reply_text("O Mackenzie já voltou pro Intercomp?", quote=False)
+    update.message.reply_markdown("**NÃO**")
+
+
+def cidade_callback(bot, udpate: Update, **optional_args):
+    update.message.reply_text("Este ano, o Intercomp será em Rio Claro")
+
+
 def intercomp_callback(bot, update, **optional_args):
     update.message.reply_text("INTERCOMPE", quote=False)
     update.message.reply_text("PE", quote=False)
@@ -36,6 +45,8 @@ def webhook(request):
     dispatcher = Dispatcher(bot, None, 0)
     dispatcher.add_handler(CommandHandler("intercomp", intercomp_callback))
     dispatcher.add_handler(CommandHandler("contagem", contagem_callback))
+    dispatcher.add_handler(CommandHandler("mackenzie", mackenzie_callback))
+    dispatcher.add_handler(CommandHandler("cidade", cidade_callback))
 
     if request.method == "POST":
         update = Update.de_json(request.get_json(force=True), bot)
