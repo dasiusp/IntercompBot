@@ -7,11 +7,11 @@ from datetime import datetime, time
 
 def mackenzie_callback(bot, update: Update, **optional_args):
     update.message.reply_text("O Mackenzie já voltou pro Intercomp?", quote=False)
-    update.message.reply_markdown("**NÃO**")
+    update.message.reply_markdown("**NÃO**", quote=False)
 
 
-def cidade_callback(bot, udpate: Update, **optional_args):
-    update.message.reply_text("Este ano, o Intercomp será em Rio Claro")
+def cidade_callback(bot, update: Update, **optional_args):
+    update.message.reply_text("Este ano, o Intercomp será em Rio Claro", quote=False)
 
 
 def intercomp_callback(bot, update, **optional_args):
@@ -37,7 +37,7 @@ def contagem_callback(bot, update, **optional_args):
     now = datetime.now()
 
     update.message.reply_text("FALTAM %d dias, %d horas, %d minutos e %d segundos pro INTERCOMP NINJA EDITION"
-                              % daysHoursMinutesSecondsFromSeconds(dateDiffInSeconds(now, data_intercomp)))
+                              % daysHoursMinutesSecondsFromSeconds(dateDiffInSeconds(now, data_intercomp)), quote=False)
 
 
 def webhook(request):
