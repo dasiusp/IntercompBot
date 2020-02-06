@@ -19,6 +19,11 @@ def intercomp_callback(bot, update, **optional_args):
     update.message.reply_text("PE", quote=False)
     update.message.reply_text("ÔÔÔÔÔÔ", quote=False)
 
+def mochila_callback(bot, update, **optional_args):
+    update.message.reply_text("AAAAAAA", quote=False)
+    update.message.reply_text("EU TÔ MALUCOOOO", quote=False)
+    update.message.reply_text("ROUBARAM MINHA MOCHILAAA", quote=False)
+    update.message.reply_text("PRETA DA NIKEEEEE", quote=False)
 
 def contagem_callback(bot, update, **optional_args):
     def dateDiffInSeconds(date1, date2):
@@ -46,6 +51,7 @@ def webhook(request):
     dispatcher.add_handler(CommandHandler("contagem", contagem_callback))
     dispatcher.add_handler(CommandHandler("mackenzie", mackenzie_callback))
     dispatcher.add_handler(CommandHandler("cidade", cidade_callback))
+    dispatcher.add_handler(CommandHandler("mochila", mochila_callback))
 
     if request.method == "POST":
         update = Update.de_json(request.get_json(force=True), bot)
