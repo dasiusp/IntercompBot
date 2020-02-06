@@ -1,8 +1,10 @@
 import os
+from datetime import datetime
 
+from pytz import timezone
 from telegram import Update, Bot
 from telegram.ext import Dispatcher, CommandHandler
-from datetime import datetime, time, timedelta, timezone
+
 
 def mackenzie_callback(bot, update: Update, **optional_args):
     update.message.reply_text("O Mackenzie já voltou pro Intercomp?", quote=False)
@@ -37,9 +39,10 @@ def contagem_callback(bot, update, **optional_args):
         days, hours = divmod(hours, 24)
         return days, hours, minutes, seconds
 
-    data_intercomp = datetime.strptime('2020-06-11 00:00:01', '%Y-%m-%d %H:%M:%S')
+    fuso_horario_sp = timezone('America/Sao_Paulo')
+    data_intercomp = datetime(year=2020, month=6, day=11, hour=0, minute=0, second=1, tzinfo=fuso_horario_sp)
 
-    now = datetime.now().astimezone(timezone(timedelta(hours=-3))) #Ajustando timezone para o padrão brasileiro (UTC-3)
+    now = datetime.now().astimezone(fuso_horario_sp)
     update.message.reply_text("FALTAM %d dias, %d horas, %d minutos e %d segundos pro INTERCOMP NINJA EDITION"
                               % daysHoursMinutesSecondsFromSeconds(dateDiffInSeconds(now, data_intercomp)), quote=False)
 
