@@ -12,7 +12,7 @@ def mackenzie_callback(bot, update: Update, **optional_args):
 
 
 def cidade_callback(bot, update: Update, **optional_args):
-    update.message.reply_text("Este ano, o Intercomp não será :(", quote=False)
+    update.message.reply_text("Este ano, o Intercomp será 100% virtual!", quote=False)
 
 
 def intercomp_callback(bot, update, **optional_args):
@@ -43,7 +43,7 @@ def contagem_callback(bot, update, **optional_args):
     data_intercomp = datetime(year=2020, month=6, day=11, hour=0, minute=0, second=1, tzinfo=fuso_horario_sp)
 
     now = datetime.now().astimezone(fuso_horario_sp)
-    update.message.reply_text("FALTAM 365 + %d dias, %d horas, %d minutos e %d segundos pro INTERCOMP NINJA EDITION"
+    update.message.reply_text("FALTAM %d dias, %d horas, %d minutos e %d segundos pro E-NTERCOMP ESPORTS EDITION"
                               % daysHoursMinutesSecondsFromSeconds(dateDiffInSeconds(now, data_intercomp)), quote=False)
 
 
