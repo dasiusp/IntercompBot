@@ -37,13 +37,17 @@ def contagem_callback(bot, update, **optional_args):
         minutes, seconds = divmod(seconds, 60)
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
-        return days, hours, minutes, seconds
+        return abs(days), hours, minutes, seconds
 
     fuso_horario_sp = timezone('America/Sao_Paulo')
     data_intercomp = datetime(year=2020, month=6, day=11, hour=0, minute=0, second=1, tzinfo=fuso_horario_sp)
 
     now = datetime.now().astimezone(fuso_horario_sp)
-    update.message.reply_text("FALTAM %d dias, %d horas, %d minutos e %d segundos pro E-NTERCOMP ESPORTS EDITION"
+    if(now < data_intercomp) :
+        update.message.reply_text("FALTAM %d dias, %d horas, %d minutos e %d segundos pro E-NTERCOMP ESPORTS EDITION"
+                              % daysHoursMinutesSecondsFromSeconds(dateDiffInSeconds(now, data_intercomp)), quote=False)
+    else:
+        update.message.reply_text("JÁ SE PASSARAM %d dias, %d horas, %d minutos e %d segundos do E-NTERCOMP ESPORTS EDITION"
                               % daysHoursMinutesSecondsFromSeconds(dateDiffInSeconds(now, data_intercomp)), quote=False)
 
 
